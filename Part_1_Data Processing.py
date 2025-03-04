@@ -1,3 +1,6 @@
+
+# Denne linie er fake
+
 # Importér nødvendige biblioteker:
 import pandas as pd                  # Pandas bruges til at læse og håndtere CSV-data.
 import nltk                          # NLTK er et bibliotek til naturlig sprogbehandling.
@@ -5,8 +8,6 @@ import nltk                          # NLTK er et bibliotek til naturlig sprogbe
 # Downloader nødvendige modeller til tokenisering og stopord:
 nltk.download('punkt')               # Punkt-modellen er nødvendig for tokenisering.
 nltk.download('stopwords')           # Stopordslister er nødvendige for at fjerne "støj-ord".
-nltk.download('punkt_tab')           # Punkt-modellen er nødvendig for tokenisering.
-
 
 # Importér de funktioner, vi skal bruge fra NLTK:
 from nltk.tokenize import word_tokenize  # Funktion til at opdele tekst i ord (tokens).
