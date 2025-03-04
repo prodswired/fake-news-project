@@ -7,14 +7,14 @@ nltk.download('punkt')               # Punkt-modellen er nødvendig for tokenise
 nltk.download('stopwords')           # Stopordslister er nødvendige for at fjerne "støj-ord".
 nltk.download('punkt_tab')           # Punkt-modellen er nødvendig for tokenisering.
 
+
 # Importér de funktioner, vi skal bruge fra NLTK:
 from nltk.tokenize import word_tokenize  # Funktion til at opdele tekst i ord (tokens).
 from nltk.corpus import stopwords        # Til at hente lister af engelske stopord.
 from nltk.stem import PorterStemmer      # PorterStemmer bruges til at reducere ord til deres rodform.
 
 # Henter CSV-filen fra URL'en:
-url = 'https://raw.githubusercontent.com/several27/FakeNewsCorpus/master/news_sample.csv'
-data = pd.read_csv(url)              # Læser CSV-filen ind i en Pandas DataFrame.
+data = pd.read_csv('https://raw.githubusercontent.com/several27/FakeNewsCorpus/master/news_sample.csv')         # Læser CSV-filen ind i en Pandas DataFrame.
 
 # Samler al tekst fra kolonnen 'content' til én stor streng.
 # Her fjerner vi eventuelle manglende værdier med dropna() for at undgå fejl.
@@ -59,3 +59,25 @@ print("Reduktionsrate efter stemming:", reduction_rate_stem)
 print("Eksempel tokens (før):", tokens_no_stop[:10])                # Før stopordsfjernelse.
 print("Eksempel tokens (efter stemming):", tokens_stemmed[:10])     # Efter stemming.
 
+
+## Part 4
+# Importér nødvendige funktioner til datasplitning:
+from sklearn.model_selection import train_test_split  # Bruges til at opdele datasættet
+
+# Antag, at 'data' er en Pandas DataFrame, som indeholder hele dit datasæt
+# fx datasættet med FakeNewsCorpus, som er blevet forbehandlet tidligere.
+
+# Først splittes dataen i træningsdata (80%) og en midlertidig del (20%)
+train_data, temp_data = train_test_split(data, test_size=0.2, random_state=42)
+# Her får train_data 80% af rækkerne, mens temp_data får de resterende 20%.
+
+# Dernæst splittes den midlertidige del i to lige store dele:
+# Én del bliver valideringsdata (10% af den oprindelige data) og én del bliver testdata (10% af den oprindelige data).
+val_data, test_data = train_test_split(temp_data, test_size=0.5, random_state=42)
+
+# Udskriv antallet af rækker i hvert sæt for at bekræfte opdelingen:
+print("Antal rækker i træningsdata:", len(train_data))
+print("Antal rækker i valideringsdata:", len(val_data))
+print("Antal rækker i testdata:", len(test_data))
+
+# Print-udsagn sikrer, at vi kan se resultatet direkte i konsollen.
