@@ -5,7 +5,7 @@ import nltk                          # NLTK er et bibliotek til naturlig sprogbe
 # Downloader nødvendige modeller til tokenisering og stopord:
 nltk.download('punkt')               # Punkt-modellen er nødvendig for tokenisering.
 nltk.download('stopwords')           # Stopordslister er nødvendige for at fjerne "støj-ord".
-nltk.download('punkt_tab')           # Punkt-modellen er nødvendig for tokenisering.
+
 
 
 # Importér de funktioner, vi skal bruge fra NLTK:
